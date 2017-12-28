@@ -1,0 +1,24 @@
+version: "3"
+
+services:
+    boom-rabbitmq:
+        image: "rabbitmq:3-management"
+        hostname: "boom-rabbitmq"
+        deploy:
+            placement:
+                constraints:
+                    - node.labels.network == routing_mesh
+                    - node.labels.shared_volumes == yes
+        environment:
+            RABBITMQ_ERLAND_COOKIE: "SWQONISSEWURSTPCLNMEQG"
+            RABBITMQ_DEFAULT_USER: "rabbitmq"
+            RABBITMQ_DEFAULT_PASS: "rabbitmq"
+        ports:
+            - "15672:15672"
+            - "5672:5672"
+        volumes:
+            - volume-rabbitmq-db:/var/lib/rabbitmq/
+        labels:
+            NAME: "boom-rabbitmq"
+volumes:
+    volume-rabbitmq-db:
