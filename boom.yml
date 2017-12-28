@@ -26,5 +26,5 @@ services:
         labels:
             NAME: "boom-rabbitmq"
 
-            volumes:
+volumes:
     volume-rabbitmq-db:
