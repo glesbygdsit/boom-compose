@@ -24,8 +24,8 @@ services:
                     - node.labels.shared_volumes == yes
         environment:
             RABBITMQ_ERLAND_COOKIE: "SWQONISSEWURSTPCLNMEQG"
-            RABBITMQ_DEFAULT_USER: "rabbitmq"
-            RABBITMQ_DEFAULT_PASS: "rabbitmq"
+            RABBITMQ_DEFAULT_USER: "glit"
+            RABBITMQ_DEFAULT_PASS: "glit"
         ports:
             - "15672:15672"
             - "5672:5672"
