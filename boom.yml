@@ -5,6 +5,14 @@ services:
         image: "glesbygdsit/boom-hit-miss-target-service"
         environment:
             RABGLITMQ: "amqp:glit:glit@boom-rabbitmq"
+            MONGODB_URL: "mongodb://boom-mongo:27017"
+            PORT: "1338"
+        ports:
+            - "1338:1338"
+        deploy:
+            placement:
+                constraints:
+                    - node.labels.network == routing_mesh
 
     boom-rabbitmq:
         image: "rabbitmq:3-management"
@@ -25,6 +33,18 @@ services:
             - volume-rabbitmq-db:/var/lib/rabbitmq/
         labels:
             NAME: "boom-rabbitmq"
+    boom-mongo:
+        image: "mongo"
+        hostname: "boom-mongo"
+        deploy:
+            placement:
+                constraints:
+                    - node.labels.shared_volumes == yes
+        ports:
+            - "27017:27017"
+        volumes:
+            - volume-mongo-db:/data/db
 
 volumes:
     volume-rabbitmq-db:
+    volume-mongo-db:
