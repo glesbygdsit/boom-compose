@@ -2,7 +2,7 @@ version: "3"
 
 services:
     boom-hit-miss-target-service:
-        image: "glesbygdsit/boom-hit-miss-target-service"
+        build: ./boom-hit-miss-target-service
         environment:
             RABGLITMQ: "amqp:glit:glit@boom-rabbitmq"
             MONGODB_URL: "mongodb://boom-mongo:27017"

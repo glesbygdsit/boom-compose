@@ -1,0 +1,3 @@
+[submodule "boom-hit-miss-target-service"]
+	path = boom-hit-miss-target-service
+	url = https://github.com/glesbygdsit/boom-hit-miss-target-service.git
